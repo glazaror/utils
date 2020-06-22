@@ -1,0 +1,5 @@
+1. Decodificar texto en base 64
+    let textoDecodificado = window.atob(textoEnBase64)
+
+2. Parsear un json
+    JSON.parse(textoJson);
