@@ -1,0 +1,108 @@
+Para ver el estado actual del repositorio (pendientes de commitear, de pasar al stage)
+  git status
+
+Para crear un repositorio localmente:
+  mkdir project   (creamos el directorio)
+  git init        (nos ubicamos en el directorio y ejecutamos este comando)
+  git remote add origin git@github.com:yourlogin/your-repo.git
+  git add .       (adjuntamos todos los archivos en el "stage"... luego podemos hacer commit y luego push)
+
+Para adicionar cambios al "stage":
+  git add <file_name>
+
+Para adicionar cambios parciales de un archivo al "stage"
+Aqui se preguntara cambio x cambio para confirmar:
+  git add -p <file_name>
+  
+Para quitar cambios del area "stage":
+  git reset HEAD <file>
+
+Para revertir el ultimo commit (deshacer el ultimo commit) manteniendo los cambios en el "stage" (es decir los archivos marcados por commitear):
+  git reset --soft HEAD~1
+  
+Para revertir el ultimo commit (deshacer el ultimo commit) sin mantener los cambios en el "stage" (es decir los archivos desmarcados):
+  git reset --mixed HEAD~1
+  
+Para revertir el ultimo commit (deshacer el ultimo commit) sin mantener los cambios en el "stage" y eliminar los cambios en el directorio de trabajo... 
+es decir nisiquiera se tendrian los archivos pendientes x pasar al stage:
+  git reset --hard HEAD~1
+
+Para revertir los cambios locales en un archivo
+git checkout -- filename.txt
+
+Para hacer commit directo sin que se muestre editor de texto (por ejemplo VI)... ingresariamos directo el mensaje del commit:
+  git commit -m "Arregla el diseño de la pagina web"
+  
+Para hacer commit directo sin que se muestre editor de texto (por ejemplo VI)
+incluyendo los cambios que no fueron colocados en el stage:
+  git commit -am "Arregla el diseño de la pagina web"
+  
+Para ver los nombres de los repositorios remotos (por defecto siempre le ponen "origin" al creado en github):
+  git remote
+
+Para ver las urls de los repositorios remotos:
+  git remote -v
+
+Para subir los cambios al repositorio remoto (PUSH)
+  git push <repository_name> <branch_to_push>
+  git push origin master
+
+Para descargar cambios desde el repositorio remoto (PULL)
+  git pull origin master
+
+Para ver el historial de lo que ha pasado:
+  git log
+
+Para ver el historial de manera grafica:
+  git log --graph --decorate --oneline --all
+
+Para listar los branches del repositorio:
+  git branch
+  
+Para crear un nuevo branch (me imagino que x default se basa en el master):
+  git branch 2017-001
+
+Para cambiar de un branch a otro:
+  git checkout <branche_name_to_change>
+  git checkout 2017-001
+  
+Para hacer merge en el master con un branch:
+Hacemos checkout al master y luego el merge:
+  git checkout master
+  git merge 2017-002
+  Luego ejecutar un push:
+  git push
+  
+Para eliminar branches:
+Al eliminar un branch... GIT solo lo elimina del "listado de branches" sin embargo no se eliminan sus commits
+Esto puede ser util xq si es nos equivamos al eliminar un "branch" podemos recuperarlo a partir de su commit
+Sin embargo tambien tiene sus contras ya que al eliminar un "branch" aun se mantendria su contenido basurita
+incluyendo binarios, etc. 
+  1. Para eliminar, previamente verificando si algun cambio no ha sido sincronizado con el master:
+  git branch -d 2017-001
+  
+  2. Para eliminar, obligando a eliminar sin verificar cambios pendientes x sincronizar con el master:
+  git branch -D 2017-001
+
+Para crear un branch localmente y luego subirlo al repositorio:
+  1. git checkout -b your_branch
+  2. git push --set-upstream origin your_branch
+
+Usar recolector de basura para hacer limpieza... el recolector revisa si puede compactar algunas cosas
+  git gc
+
+Para adicionar un cambio en un commit existente... 
+Con este comando podemos modificar el mensaje del commit, adicionar cambios
+sin necesidad de hacer otro "commit"... es decir podemos apañar que se nos olvido adicionar algo
+Da la posibilidad de reescribir el historial
+  git commit --amend
+
+Cambiar url del repositorio:
+  git remote set-url origin git://new.url.here
+
+Eliminar commits:
+  git push -f idcommit:master
+
+
+revisar:
+https://stackoverflow.com/questions/20381976/rest-api-design-getting-a-resource-through-rest-with-different-parameters-but
