@@ -1,0 +1,36 @@
+1. Para crear un proyecto java con gradle (https://www.mkyong.com/gradle/gradle-create-java-project-structure-automatically/):
+    gradle init --type java-library
+
+2. Desde proyectos Gradle para poder trabajar con dependencias de librerias se puede hacer uso del repositorio de maven.
+   
+   2.1. En el build.grale del proyecto Gradle que se requiere publicar en el repositorio maven para que pueda ser referenciado por algún otro proyecto Gradle se debe incluir el plugin 'maven-publish'
+        
+        apply plugin: 'maven-publish'
+   
+   2.2. Luego como repository (se puede especificar en duro la ruta del repositorio local de maven o usar mavenLocal):
+        Y en vez de mavenCentral -> "http://repo.maven.apache.org/maven2" para evitar errores de compatibilidad desde java 1.8 con gradle 4.x
+        
+        repositories {
+            maven {
+                url "file://C:/Users/USUARIO/.m2/repository/"
+            }
+            mavenLocal()
+            maven { url = "http://repo.maven.apache.org/maven2" }
+        }
+   
+   2.3. Se debe definir el task 'publishing' y colocar el nombre del archivo y el repositorio maven donde se requiere instalar.
+        En este ejemplo se colocaron rutas fijas... se deben usar las variables:
+        publishing {
+            publications {
+                maven(MavenPublication) {
+                    artifact('F:/instaladores/springcloudws/git/springcloudproject/springboot-servicio-commons/build/libs/springboot-servicio-commons-0.0.1-SNAPSHOT.jar') {
+                        extension 'jar'
+                    }
+                }
+            }
+            repositories {
+                maven {
+                    url "file://C:/Users/USUARIO/.m2/repository/"
+                }
+            }
+        }
