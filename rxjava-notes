@@ -1,0 +1,31 @@
+1)
+"Observable.create" is error prone... so it should be used as a last option (preferably use: fromCallable or defer).
+
+Observable<String> value() {
+  return Observable.create(subscriber -> {
+    subscriber.onNext("12345");
+    subscriber.onCompleted();
+  });
+}
+
+is equivalent to (better choice, simpler):
+Observable<String> value() {
+  return Observable.fromCallable(() -> "12345");
+}
+
+is equivalent to:
+Observable<String> value() {
+  return Observable.defer(() -> Observable.just("12345"));
+}
+
+* When someone calls subscribe on the value returned by "Observable.fromCallable" or "Observable.defer" then the lambda is executed.
+* Difference between "fromCallable" and "defer" is that the first allows to return a single value (single string, integer, etc), 
+However with "defer" we can return any type of "Observable"
+
+2) Options shown in 1) are not equivalent to the following:
+
+Observable<String> value() {
+  return Observable.just("12345");
+}
+
+because this returns calculated value at "Observable creation time ", rather than when "subscribe" is called... what is the desired behaviour.
