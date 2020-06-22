@@ -106,3 +106,27 @@ Eliminar commits:
 
 revisar:
 https://stackoverflow.com/questions/20381976/rest-api-design-getting-a-resource-through-rest-with-different-parameters-but
+
+
+- Configurando nuestro usuario/correo de forma global en nuestra configuración de GIT
+- El "--global" es para configurar el usuario/correo de forma global en cualquier repositorio que tengamos
+    git config --global user.email "glazaror@gmail.com"
+    git config --global user.name "glazaror"
+    
+- Inicializar repositorio vacio
+    git init
+
+- Si es que ya estamos trabajando en un repositorio local, varios commits locales y ahora queremos subir los cambios a un repositorio remoto:
+    git remote add origin https://github.com/glazaror/servicio-items-config.git
+  Luego subir los cambios con el siguiente comando:
+    git push -u origin master
+
+- Desactivar verificación certificado SSL
+    git config --global http.sslVerify false
+
+- Si es que ya estamos trabajando en un repositorio local, cuya url remota ha cambiado entonces renombramos la url remota:
+    Vemos las urls de repositorios remotos
+    git remove -v
+    
+    Cambiamos la url:
+    git remote set-url origin https//....new..url...
