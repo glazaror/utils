@@ -1,0 +1,11 @@
+Para ver la fecha que tiene configurada actualmente el BIOS:
+-> hwclock
+
+Para ver la fecha del sistema operativo:
+-> date
+
+Para cambiar la fecha del sistema operativo:
+-> date -s "11 MAR 2006 11:11:11"
+
+Para persistir la fecha del sistema operativo en la fecha del BIOS:
+-> hwclock --systohc
