@@ -1,0 +1,9 @@
+* Ubicar el puerto donde esta ejecutandose la consola de administración:
+
+    1. Ubicarse en /domains/nombre_dominio/config.xml
+    2. Ver el archivo: config.xml
+    3. Buscar el texto "administration-port": grep -i "administration-port" config.xml
+
+* Iniciar la consola de administración:
+    1. Ubicarse en /domains/nombre_dominio/bin/
+    2. Ejecutar shell: nohup ./startWebLogic.sh &
