@@ -1,0 +1,5 @@
+Luego de generar el dist del proyecto angular, podemos usar este dist en un servidor web existen o para pruebas instalar un servidor http:
+    npm i -g http-server --save
+
+Para desplegar el dist con el http-server instalado:
+    http-server ./dist
