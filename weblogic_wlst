@@ -1,0 +1,35 @@
+DEPLOY EAR
+----------
+edit()
+startEdit()
+deploy('prueba', 'I:\Oracle\EnterpriseHelloWorld.ear', targets='AdminServer')
+save()
+activate()
+exit()
+
+UNDEPLOY
+--------
+connect('weblogic', 'weblogic', 't3://localhost:7001')
+edit()
+startEdit()
+undeploy('prueba')
+save()
+activate()
+exit()
+
+STOP APPLICATION
+----------------
+stopApplication('prueba')
+
+
+script monitoring
+-----------------
+domainConfig()
+serverNames = cmo.getServers()
+domainRuntime()
+for name in serverNames:
+ cd("/ServerRuntimes/"+name.getName()+"/JVMRuntime/"+name.getName())
+ heapFree = int(get('HeapFreeCurrent'))/(1024*1024)
+ heapTotal = int(get('HeapSizeCurrent'))/(1024*1024)
+ heapUsed = (heapTotal - heapFree)
+ print '%14s %4d MB %4d MB %4d MB' % (name.getName(),heapTotal, heapFree, heapUsed)
