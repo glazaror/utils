@@ -1,0 +1,5 @@
+git difftool --tool-help
+git mergetool --tool-help
+
+git difftool --tool=p4merge
+git mergetool --tool=p4merge
