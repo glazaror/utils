@@ -1,0 +1,15 @@
+http://industryvertical.blogspot.com/2013/01/fast-swap-implementation.html
+
+* Fast swap - cargar cambios en clases sin redeployar
+
+EAR -> weblogic-application.xml:
+--------------------------------
+      <wls:fast-swap>
+           <wls:enabled>true</wls:enabled>
+           <wls:refresh-interval>5</wls:refresh-interval>
+           <wls:redefinition-task-limit>5</wls:redefinition-task-limit>
+      </wls:fast-swap>
+      
+Disable Production MODE in domain
+---------------------------------
+$DOMAIN_NAME$/General/Production Mode
