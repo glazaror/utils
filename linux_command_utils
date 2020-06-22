@@ -1,0 +1,37 @@
+Buscar aplicaciones corriendo por un determinado puerto:
+  netstat -ltnp | grep -w ':8080'
+
+Generar ssh key pair para autenticación:
+  ssh-keygen -t rsa -C 'userexample@example.com'
+
+Abrir una shell para un usuario que no lo tiene configurado:
+  sudo -s \bin\bash user
+
+Para cambiar a usuario root sin pedir credenciales
+  sudo -s
+
+Para limpiar la partición /boot en caso se tenga poco espacio para actualizar el kernel:
+  * Buscamos los kernels instalados con el siguiente comando:
+      yum list installed | grep kernel
+
+  * Verificamos cual es la versión del kernel que se esta utilizando:
+      uname -r
+      
+  * Borramos el mas antiguo (identificado en el primer paso):
+      yum remove kernel-3.10.0-229.el7.x86_64
+
+Cambiar propietario:grupo de un directorio:
+      chown -R nombreusuario:nombregrupo nombredirectorio
+      Ejemplo:
+      chown -R hp:hpinstall tecnologia2-notificaciones-ccm-ecm
+
+Para obtener el numero de proceso que esta ejecutandose en un determinado puerto:
+        sudo lsof -i :{puerto}
+      ejemplo:
+        sudo lsof -i :10251
+        
+Para obtener todos los procesos que se estan ejecutando en la maquina:
+  ps ax
+
+Para descomprimir un zip, gz, etc:
+  tar -zxvf *****.gz
