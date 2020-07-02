@@ -140,3 +140,16 @@ https://stackoverflow.com/questions/20381976/rest-api-design-getting-a-resource-
      
   3) Force push:
      git push --force
+
+- Revert to specific commit id content... and generate new commit with these changes:
+  1) Find the commit id to revert to:
+     git log
+     
+  2) Checkout to that version (these will apply changes locally):
+     git checkout d6c9dfa19bff4999fdc2214a7aac9021ed1cc804 .
+     
+  3) Commit changes:
+     git commit -m ".... reverting changes...."
+     
+  4) Push changes:
+     git push origin
