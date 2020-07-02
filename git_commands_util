@@ -130,3 +130,13 @@ https://stackoverflow.com/questions/20381976/rest-api-design-getting-a-resource-
     
     Cambiamos la url:
     git remote set-url origin https//....new..url...
+
+- Revert to specific commit id:
+  1) Find the commit id to revert to:
+     git log
+     
+  2) Reset to that version (hard):
+     git reset --hard d6c9dfa19bff4999fdc2214a7aac9021ed1cc804
+     
+  3) Force push:
+     git push --force
