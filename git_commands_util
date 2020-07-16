@@ -28,7 +28,10 @@ es decir nisiquiera se tendrian los archivos pendientes x pasar al stage:
   git reset --hard HEAD~1
 
 Para revertir los cambios locales en un archivo
-git checkout -- filename.txt
+  git checkout -- filename.txt
+
+Para revertir cambios locales (incluidos nuevos archivos, archivos renombrados)
+  git clean -f
 
 Para hacer commit directo sin que se muestre editor de texto (por ejemplo VI)... ingresariamos directo el mensaje del commit:
   git commit -m "Arregla el diseño de la pagina web"
