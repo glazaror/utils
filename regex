@@ -1,0 +1,4 @@
+- Using multiple grouping:
+^(\d{3,14})(\d{2})$
+
+Given the value: 123456 --> the result for grouping 1 is: 1234 --> and the result for grouping 2 is: 56
