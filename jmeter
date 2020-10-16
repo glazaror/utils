@@ -1,0 +1,7 @@
+1. Generate dashboard html report
+  set PATH=%PATH%;<<path-to-your-jmeter-bin>>
+  jmeter -n -t <<your-jmx-file>> -l <<a-file-for-generated-data-in-csv>> -e -o <<path-to-your-generated-html>>
+  
+  For example:
+  set PATH=%PATH%;c:\programs\jmeter-5.2.1\bin
+  jmeter -n -t myrestapi-test-plan.jmx -l report\test1.csv -e -o report\HTMLReport
