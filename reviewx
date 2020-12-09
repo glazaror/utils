@@ -1,0 +1,13 @@
+getNumeroTransaccion() {
+	var localtransaction_in_session = dbms_context.get('SESSION_localtransaction'); // EN MI CONEXION DE BD
+	var localtransaction_dbms = dbms_localtransaction.current; // SIEMPRE  TIENE VALOR
+	if (localtransaction_in_session == null || localtransaction_in_session != localtransaction_dbms) {
+		// entonces es nueva transaccion;
+		select seqtransaccion.nextvalue into numero_transaccion from dual;
+		dbms_context.put("SESSION_localtransaction", localtransaction_dbms)
+		return numero_transaccion;
+	}
+	select dbms_context.GET("numero_transaccion", numero_transaccion) into numero_transaccion;
+	returnn numero_transaccion;
+	
+}
