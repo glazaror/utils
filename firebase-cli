@@ -1,0 +1,13 @@
+*** Deploy angular app ***
+-> firebase login
+-> firebase init (into dist directory) (in questions don't answer: Don't set up a default project
+
+Go to firebase console and create new project
+Then return to firebase CLI to associate the repo with the recently created project:
+
+Associate repository with firebase project:
+-> firebase use --add  (Select the recently created project... give this an alias)
+
+Deploy:
+-> firebase deploy
+
