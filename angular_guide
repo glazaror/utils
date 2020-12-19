@@ -3,3 +3,42 @@ Luego de generar el dist del proyecto angular, podemos usar este dist en un serv
 
 Para desplegar el dist con el http-server instalado:
     http-server ./dist
+
+****************************************************************
+
+To create a new project:
+-> ng new my-app
+
+To resolve atom editor warning after installing plugins:
+-> https://stackoverflow.com/questions/49699157/atom-and-boostrap-4-failed-to-load-snippet-duplicate-key-button-group-boots
+
+To start the angular application (to open in web browser you can use --open)
+Similar to spring boot: angular has it own embedded server to deploy the application.
+This command "ng serve" should be used only in development environment (not for production)
+For production environment we should convert all the typescript code to pure static code (html/javascript).
+-> ng serve --open
+
+To generate automatically the component (html, spec.ts, ts and css), this update automatically
+the app.module.ts including the new component:
+-> ng generate component <<component-name>>
+
+To generate model class:
+-> ng generate class <<class-name>>
+
+With typescript >= 2.7 add the following property in tsconfig.json after "strict": true
+-> "strictPropertyInitialization": false
+
+To generate service component:
+-> ng generate service <<service-name>>
+
+To download all dependencies:
+-> npm install
+
+To compile and generate dist:
+-> ng build --prod
+
+To deploy in firebase al dist content should be moved into new "public" directory
+
+To install firebase tools (similar to heroku cli):
+-> npm install -g firebase-tools
+
