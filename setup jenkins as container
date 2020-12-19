@@ -23,7 +23,7 @@ Install the following plugins:
 - SSH Pipeline Steps
 
 Add maven: maven_3_6_3 automatic install
-Add credentials for github and docker connections:
+Add credentials for github and docker connections (reference these in Jenkinsfile):
 - myaccount-github
 - myaccount-dockerhub
 
