@@ -1,0 +1,29 @@
+In Windows:
+-> docker run -p 8080:8080 -p 50000:50000 -d -v F:\jenkinsdir:/var/jenkins_home -v /usr/local/bin/docker:/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -u root jenkins/jenkins
+
+In Linux:
+-> sudo mkdir -m777 /var/jenkins_home
+-> docker run -p 8080:8080 -p 50000:50000 -d -v /var/jenkins_home:/var/jenkins_home -v $(which docker):/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -u root jenkins/jenkins
+-> docker run -p 8080:8080 -p 50000:50000 -d -v /var/jenkins_home:/var/jenkins_home -v $(which docker):/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -u root jenkins/jenkins
+
+View initial password:
+-> docker logs jenkins-container-id
+
+Default Jenkins url: http://host:8080/
+
+-> docker run -p 8080:8080 -p 50000:50000 -d -v /var/jenkins_home:/var/jenkins_home -v $(which docker):/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -u root jenkins/jenkins
+-> docker run -p 8080:8080 -p 50000:50000 -d -v /var/jenkins_home:/var/jenkins_home -v $(which docker):/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -u root jenkins/jenkins
+
+Install the following plugins:
+- Pipeline Maven Integration Plugin
+- CloudBees Docker Build and Publish plugin
+- Docker Pipeline plugin
+- amazon ec2
+- Credentials Binding Plugin
+- SSH Pipeline Steps
+
+Add maven: maven_3_6_3 automatic install
+Add credentials for github and docker connections:
+- myaccount-github
+- myaccount-dockerhub
+
