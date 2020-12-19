@@ -1,0 +1,35 @@
+Create certificate
+-> openssl req -new -newkey rsa:2048 -nodes -keyout nginx.key -out nginx.csr
+-> openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nginx.key -out nginx.crt
+
+Create docker container using reference to other container instance (--link cliente-microservice:cliente-microservice)
+-> docker run -d -p 80:80 -p 443:443 --link cliente-microservice:cliente-microservice --name=nginx nginx
+
+Manually copy of recently created certificate into docker container:
+-> docker cp nginx.crt nginx:/home/nginx.crt
+-> docker cp nginx.key nginx:/home/nginx.key
+
+Update nginx config, setup vim editor:
+-> cd /etc/nginx/
+-> apt update
+-> apt install --assume-yes vim
+
+Edit /etc/nginx/nginx.conf
+->
+...
+http {
+  ....
+  server {
+     listen 443 ssl;
+     server_name microservices-glazaror-test-server.southcentralus.cloudapp.azure.com;
+     ssl_certificate /home/nginx.crt;
+     ssl_certificate_key /home/nginx.key;
+
+     location / {
+        proxy_pass http://cliente-microservice:8090;
+        proxy_set_header Host      $host;
+        proxy_set_header X-Real-IP $remote_addr;
+     }
+  }
+  ....
+}
