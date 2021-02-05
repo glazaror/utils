@@ -156,3 +156,7 @@ https://stackoverflow.com/questions/20381976/rest-api-design-getting-a-resource-
      
   4) Push changes:
      git push origin
+
+- When source code (directory names + file names) have more than 260 characters and you want to clone in Windows Platform then git client alerts you with the message: "Filename too long"
+  So to enable long paths execute the following command:
+     git config --system core.longpaths true
